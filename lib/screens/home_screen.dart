@@ -1,4 +1,5 @@
 import 'package:contact_app/bloc/contact_bloc/contact_bloc.dart';
+import 'package:contact_app/screens/contact_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Contacts'),
         elevation: 0,
         centerTitle: true,
+        leading: const Icon(Icons.person),
       ),
       body: BlocProvider(
         create: ((context) => _contactBloc),
@@ -61,13 +63,15 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: ((context, index) {
             final Contact contact = contacts[index];
             return ListTile(
-              title: Text(contact.fullName.toString()),
-              subtitle: Text(contact.nickName.toString()),
-              trailing: const Icon(Icons.arrow_right),
-              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(contact.toString()),
-              )),
-            );
+                title: Text(contact.fullName.toString()),
+                subtitle: Text(contact.nickName.toString()),
+                trailing: const Icon(Icons.arrow_right),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => BlocProvider<ContactBloc>.value(
+                            value: _contactBloc,
+                            child: ContactDetail(contact: contact))))));
           }));
     } else {
       return const Center(

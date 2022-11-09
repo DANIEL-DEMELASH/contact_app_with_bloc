@@ -18,6 +18,18 @@ class ContactLoaded extends ContactState {
   ContactLoaded(this.contacts);
 }
 
+class ContactUpdated extends ContactState {
+  final bool isUpdated;
+
+  ContactUpdated(this.isUpdated);
+}
+
+class ContactDeleted extends ContactState {
+  final Contact contact;
+
+  ContactDeleted(this.contact);
+}
+
 class ContactError extends ContactState {
   final String error;
   ContactError(this.error);
