@@ -44,6 +44,7 @@ class _CreateContactState extends State<CreateContact> {
               title: const Text('New Contact'),
               elevation: 0,
               centerTitle: true,
+              backgroundColor: const Color(0xff3E6D9C),
             ),
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -62,8 +63,11 @@ class _CreateContactState extends State<CreateContact> {
 
                   BlocProvider.of<ContactBloc>(context).add(NewContact(data));
                 },
-                color: Colors.lime,
-                child: const Text('Save'),
+                color: const Color(0xff001253),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             body: SingleChildScrollView(

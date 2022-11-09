@@ -80,6 +80,7 @@ class _ContactDetailState extends State<ContactDetail> {
               title: const Text('Contact Info'),
               elevation: 0,
               centerTitle: true,
+              backgroundColor: const Color(0xff3E6D9C),
               actions: [
                 IconButton(
                     onPressed: () {
@@ -103,8 +104,11 @@ class _ContactDetailState extends State<ContactDetail> {
                             FocusScope.of(context).requestFocus(nameFocusNode);
                           });
                         },
-                        color: Colors.yellow,
-                        child: const Text('Edit'),
+                        color: const Color(0xff3E6D9C),
+                        child: const Text(
+                          'Edit',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -128,8 +132,11 @@ class _ContactDetailState extends State<ContactDetail> {
                           BlocProvider.of<ContactBloc>(context)
                               .add(UpdateContact(widget.contact.id!, data));
                         },
-                        color: Colors.lime,
-                        child: const Text('Save'),
+                        color: const Color(0xff001253),
+                        child: const Text(
+                          'Save',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ],

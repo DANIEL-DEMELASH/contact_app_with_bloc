@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: ((context) => BlocProvider<ContactBloc>.value(
                       value: _contactBloc, child: const CreateContact()))));
         },
+        backgroundColor: const Color(0xff001253),
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         centerTitle: true,
         leading: const Icon(Icons.person),
+        backgroundColor: const Color(0xff3E6D9C),
       ),
       body: BlocProvider(
         create: ((context) => _contactBloc),
@@ -65,13 +67,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget contactListWidget(List<Contact> contacts, BuildContext context) {
     if (contacts.isNotEmpty) {
-      return ListView.builder(
+      return ListView.separated(
+          separatorBuilder: (context, index) {
+            return const Divider();
+          },
           itemCount: contacts.length,
           itemBuilder: ((context, index) {
             final Contact contact = contacts[index];
             return ListTile(
                 title: Text(contact.fullName.toString()),
-                subtitle: Text(contact.nickName.toString()),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(contact.phoneNumber.toString()),
+                ),
                 trailing: const Icon(Icons.arrow_right),
                 onTap: () => Navigator.push(
                     context,
