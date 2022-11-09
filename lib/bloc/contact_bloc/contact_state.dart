@@ -30,6 +30,12 @@ class ContactDeleted extends ContactState {
   ContactDeleted(this.contact);
 }
 
+class ContactCreated extends ContactState {
+  final Contact contact;
+
+  ContactCreated(this.contact);
+}
+
 class ContactError extends ContactState {
   final String error;
   ContactError(this.error);

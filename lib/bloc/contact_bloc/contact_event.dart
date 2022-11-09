@@ -17,6 +17,12 @@ class UpdateContact extends ContactEvent {
   UpdateContact(this.id, this.data);
 }
 
+class NewContact extends ContactEvent {
+  final Map<String, String> data;
+
+  NewContact(this.data);
+}
+
 class DeleteContactById extends ContactEvent {
   final int id;
 

@@ -16,6 +16,10 @@ class ApiRepository {
   Future<Contact> deleteContact(int id) {
     return _apiProvider.deleteContact(id);
   }
+
+  Future<Contact> newContact(Map<String, String> data) {
+    return _apiProvider.newContact(data);
+  }
 }
 
 class NetworkError extends Error {}

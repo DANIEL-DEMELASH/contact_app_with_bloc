@@ -44,5 +44,17 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
         }
       },
     );
+
+    on<NewContact>(
+      (event, emit) async {
+        try {
+          emit(ContactLoading());
+          final Contact contact = await apiRepository.newContact(event.data);
+          emit(ContactCreated(contact));
+        } on NetworkError {
+          emit(ContactError('failed to fetch data. is your device online?'));
+        }
+      },
+    );
   }
 }
