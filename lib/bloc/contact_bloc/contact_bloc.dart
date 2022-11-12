@@ -12,7 +12,7 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
 
     on<GetAllContacts>((event, emit) async {
       try {
-        emit(ContactInitial());
+        emit(ContactLoading());
         final List<Contact> contacts = await apiRepository.getAllContacts();
         emit(ContactLoaded(contacts));
       } on NetworkError {
